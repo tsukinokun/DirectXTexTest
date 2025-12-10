@@ -39,3 +39,9 @@
 
 # debug information files
 *.dwo
+
+# NuGet パッケージディレクトリを無視
+packages/
+
+#ビルド成果物を入れない
+x64
