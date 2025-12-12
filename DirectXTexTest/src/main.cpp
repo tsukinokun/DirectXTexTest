@@ -35,10 +35,8 @@ int WINAPI WinMain(HINSTANCE hInstance,       // Œ»İ‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“ƒCƒ“ƒXƒ^ƒ
 	while (window.ProcessMessages()) {
 		//”wŒi‚ğRGBA(0.1, 0.2, 0.3, 1.0)‚ÅƒNƒŠƒA
 		renderer.Clear(0.1f, 0.2f, 0.3f, 1.0f);
-		// SRV ‚ğƒsƒNƒZƒ‹ƒVƒF[ƒ_[‚ÉƒZƒbƒg
-		renderer.GetContext()->PSSetShaderResources(0, 1, texture.GetAddressOf());
-		// lŠpŒ`ƒƒbƒVƒ…‚ğ•`‰æ
-		quadMesh.Draw(renderer.GetContext());
+		// lŠpŒ`ƒƒbƒVƒ…‚ğ•`‰æiƒVƒF[ƒ_[‚ÆƒeƒNƒXƒ`ƒƒ‚ğ“KØ‚ÉƒZƒbƒgj
+		renderer.DrawMesh(quadMesh, texture.Get());
 		// ƒoƒbƒtƒ@‚ğ‰æ–Ê‚É•\¦iƒXƒƒbƒvƒ`ƒFƒCƒ“‚ÌPresentj
 		renderer.Present();
 	}

@@ -26,11 +26,12 @@ Renderer::Renderer(HWND hwnd, const RendererConfig& config) {
     scd.Windowed = config.windowed ? TRUE : FALSE;     // ウィンドウモード/フルスクリーン
 
     // Direct3D11 デバイスとスワップチェインを生成
+	UINT falgs = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
     if (FAILED(D3D11CreateDeviceAndSwapChain(
         nullptr,                       // アダプタ（nullptr = デフォルト GPU）
         D3D_DRIVER_TYPE_HARDWARE,      // ハードウェアドライバを使用
         nullptr,                       // ソフトウェアドライバなし
-        0,                             // フラグなし
+        falgs,                             // フラグなし
         nullptr, 0,                    // フィーチャーレベル指定なし（自動選択）
         D3D11_SDK_VERSION,             // SDK バージョン
         &scd,                          // スワップチェイン設定
@@ -141,6 +142,9 @@ ID3D11DeviceContext* Renderer::GetContext() const {
 //! @brief テクスチャ付き矩形を描画する
 //--------------------------------------------------------------
 void Renderer::DrawMesh(const Mesh& mesh, ID3D11ShaderResourceView* textureSRV) {
+	// 入力レイアウトをセット
+	context->IASetInputLayout(inputLayout.Get());
+    
     // 頂点バッファをセット
     context->IASetVertexBuffers(0, 1, mesh.vertexBuffer.GetAddressOf(), &mesh.stride, &mesh.offset);
 

@@ -19,7 +19,7 @@ Mesh CreateQuadMesh(ID3D11Device* device) {
 	{ DirectX::XMFLOAT3(-0.5f,  0.5f, 0.0f), DirectX::XMFLOAT2(0.0f, 0.0f) }, // 左上
 	};
 
-	UINT indices[] = { 0, 1, 2, 0, 2, 3 };
+	UINT indices[] = { 2, 1, 0, 3, 2, 0 };
 
 	// 頂点バッファ
 	D3D11_BUFFER_DESC vbDesc = {};

@@ -45,3 +45,7 @@ packages/
 
 #ビルド成果物を入れない
 x64
+
+*.vs
+*.cso
+*.user
